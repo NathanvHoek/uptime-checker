@@ -1,5 +1,5 @@
 #!/bin/bash
-TARGET="google2434829402.com"
+TARGET="google.com"
 
 echo "Controleren of $TARGET online is..."
 if curl -s --head  --request GET "$TARGET" | grep "200" > /dev/null; then
