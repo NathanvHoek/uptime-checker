@@ -1,0 +1,21 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-environment:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Code ophalen uit GitHub
+      uses: actions/checkout@v4
+
+    - name: Bouw de Docker container
+      run: docker build -t uptime-checker .
+
+    - name: Run de test binnen de container
+      run: docker run --name test-run uptime-checker
